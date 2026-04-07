@@ -22,7 +22,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Top Credit Bar - Sleeker Animation */
         .top-credit-bar {
             background: linear-gradient(90deg, transparent, rgba(0, 238, 255, 0.1), transparent);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -49,16 +48,13 @@
             filter: drop-shadow(0 0 15px rgba(0, 238, 255, 0.3));
         }
 
-        /* Category Buttons */
         .category-btn { cursor: pointer; position: relative; overflow: hidden; }
         .category-btn:hover { 
             border-color: var(--neon-blue); 
             background: rgba(0, 238, 255, 0.03);
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        /* Modern Plugin Card */
         .plugin-card { 
             cursor: pointer; 
             position: relative;
@@ -67,24 +63,13 @@
             justify-content: space-between;
         }
         .plugin-card:hover { 
-            border-color: rgba(0, 238, 255, 0.5); 
+            border-color: var(--neon-blue); 
             background: rgba(255, 255, 255, 0.05);
             transform: translateY(-5px);
         }
-        .plugin-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 24px;
-            box-shadow: 0 0 20px rgba(0, 238, 255, 0);
-            transition: 0.3s;
-        }
-        .plugin-card:hover::after { box-shadow: 0 0 30px rgba(0, 238, 255, 0.1); }
 
-        .plugin-title { font-size: 1.15rem; font-weight: 800; color: #fff; text-transform: uppercase; }
+        .plugin-title { font-size: 1.2rem; font-weight: 800; color: #fff; text-transform: uppercase; }
 
-        /* Search Bar Refinement */
-        .search-container { position: relative; }
         .search-input {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -95,35 +80,32 @@
         .search-input:focus {
             outline: none;
             border-color: var(--neon-blue);
-            background: rgba(255, 255, 255, 0.06);
             box-shadow: 0 0 30px rgba(0, 238, 255, 0.15);
-            width: 100%;
         }
 
         .free-badge {
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 900;
-            color: var(--neon-blue);
-            background: rgba(0, 238, 255, 0.1);
-            padding: 4px 10px;
+            color: #000;
+            background: var(--neon-blue);
+            padding: 4px 12px;
             border-radius: 6px;
             letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(0, 238, 255, 0.4);
         }
 
+        /* BIGGER PASSWORD TEXT */
         .password-tag {
-            font-size: 9px;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 0.4);
-            margin-top: 4px;
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--neon-blue);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-shadow: 0 0 10px rgba(0, 238, 255, 0.2);
         }
 
         .hidden { display: none !important; }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--neon-blue); }
     </style>
 </head>
 <body>
@@ -135,47 +117,32 @@
     <div class="max-w-6xl mx-auto px-6 pt-16 pb-24 min-h-screen flex flex-col">
         <header class="text-center mb-24">
             <h1 class="text-7xl md:text-9xl font-black flow-text tracking-tighter uppercase mb-2">EditingFlow</h1>
-            <div class="flex items-center justify-center gap-4">
-                <span class="h-[1px] w-12 bg-zinc-800"></span>
-                <p class="text-zinc-500 text-xs tracking-[0.4em] font-bold uppercase">Premium Digital Assets</p>
-                <span class="h-[1px] w-12 bg-zinc-800"></span>
-            </div>
+            <p class="text-zinc-500 text-xs tracking-[0.4em] font-bold uppercase">Premium Digital Assets</p>
         </header>
 
         <main class="flex-grow">
             <div id="main-menu" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div onclick="showPlugins()" class="category-btn glass p-16 rounded-[48px] flex flex-col items-center justify-center text-center group">
-                    <div class="w-20 h-20 mb-8 rounded-3xl bg-white/5 flex items-center justify-center group-hover:bg-cyan-500/10 transition-colors">
-                        <span class="text-4xl">📁</span>
-                    </div>
+                <div onclick="showPlugins()" class="category-btn glass p-16 rounded-[48px] flex flex-col items-center justify-center text-center">
+                    <span class="text-5xl mb-6">📁</span>
                     <h2 class="text-4xl font-extrabold uppercase tracking-tight mb-2">Plugins</h2>
-                    <p class="text-zinc-500 text-sm font-semibold tracking-wide uppercase">27 Premium Assets</p>
+                    <p class="text-zinc-500 text-sm font-semibold uppercase tracking-wide">27 Premium Assets</p>
                 </div>
-
                 <div class="glass p-16 rounded-[48px] flex flex-col items-center justify-center text-center opacity-40 cursor-not-allowed">
-                    <div class="w-20 h-20 mb-8 rounded-3xl bg-white/5 flex items-center justify-center">
-                        <span class="text-4xl">💻</span>
-                    </div>
-                    <h2 class="text-4xl font-extrabold uppercase tracking-tight mb-2">Apps</h2>
-                    <p class="text-cyan-500 text-[10px] font-black border border-cyan-500/30 px-3 py-1 rounded-full uppercase tracking-widest">Coming Soon</p>
+                    <span class="text-5xl mb-6">💻</span>
+                    <h2 class="text-4xl font-extrabold uppercase tracking-tight">Apps</h2>
+                    <p class="text-cyan-500 text-[10px] font-black border border-cyan-500/30 px-3 py-1 rounded-full uppercase tracking-widest mt-4">Coming Soon</p>
                 </div>
             </div>
 
             <div id="plugins-view" class="hidden">
                 <div class="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-8">
-                    <button onclick="showMenu()" class="group flex items-center gap-3 text-zinc-500 hover:text-white transition-all">
-                        <span class="w-8 h-8 rounded-full border border-zinc-800 flex items-center justify-center group-hover:border-white">←</span>
-                        <span class="text-xs font-bold uppercase tracking-widest">Return Home</span>
+                    <button onclick="showMenu()" class="flex items-center gap-3 text-zinc-500 hover:text-white transition-all uppercase text-xs font-bold tracking-widest">
+                        ← Return Home
                     </button>
-                    
-                    <div class="search-container w-full md:w-96">
-                        <input type="text" id="pluginSearch" onkeyup="filterPlugins()" placeholder="Search library..." 
-                               class="search-input w-full px-8 py-5 rounded-3xl font-bold text-sm">
-                    </div>
+                    <input type="text" id="pluginSearch" onkeyup="filterPlugins()" placeholder="Search library..." 
+                           class="search-input w-full md:w-96 px-8 py-5 rounded-3xl font-bold text-sm">
                 </div>
-                
-                <div id="pluginContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    </div>
+                <div id="pluginContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
             </div>
         </main>
 
@@ -201,63 +168,38 @@
 
         function renderCards(filter = "") {
             const container = document.getElementById('pluginContainer');
-            const filteredAssets = assets.filter(name => 
-                name.toLowerCase().includes(filter.toLowerCase())
-            );
+            const filteredAssets = assets.filter(name => name.toLowerCase().includes(filter.toLowerCase()));
 
-            container.innerHTML = filteredAssets.map((name, index) => {
+            container.innerHTML = filteredAssets.map((name) => {
                 const displayName = name.replace(/\./g, ' ').replace('EditingFlow', '').trim();
                 const downloadUrl = `https://github.com/EditingFlow2/ae-presets/releases/download/v1.0/${name}.zip`;
                 
                 return `
-                <div onclick="window.location.href='${downloadUrl}'" 
-                     class="glass p-10 rounded-[32px] plugin-card group"
-                     style="animation: fadeIn 0.5s ease forwards ${index * 0.05}s; opacity: 0;">
-                    <div>
-                        <div class="flex items-start justify-between mb-6">
-                            <h3 class="plugin-title group-hover:text-cyan-400 transition-colors">${displayName}</h3>
-                            <div class="flex flex-col items-end shrink-0">
-                                <span class="free-badge">FREE</span>
-                                <span class="password-tag">PW: youngtv</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                            <p class="text-zinc-600 text-[9px] font-extrabold uppercase tracking-widest">YoungTV Certified</p>
-                        </div>
+                <div onclick="window.location.href='${downloadUrl}'" class="glass p-10 rounded-[32px] plugin-card group">
+                    <div class="flex items-start justify-between mb-8">
+                        <h3 class="plugin-title group-hover:text-cyan-400 transition-colors">${displayName}</h3>
+                        <span class="free-badge">FREE</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-zinc-600 text-[10px] font-extrabold uppercase tracking-widest italic">YoungTV Official</p>
+                        <p class="password-tag">PASSWORD: youngtv</p>
                     </div>
                 </div>
                 `;
             }).join('');
         }
 
-        function filterPlugins() {
-            const query = document.getElementById('pluginSearch').value;
-            renderCards(query);
+        function filterPlugins() { renderCards(document.getElementById('pluginSearch').value); }
+        function showPlugins() { 
+            document.getElementById('main-menu').classList.add('hidden'); 
+            document.getElementById('plugins-view').classList.remove('hidden'); 
+            renderCards(); 
         }
-
-        function showPlugins() {
-            document.getElementById('main-menu').classList.add('hidden');
-            document.getElementById('plugins-view').classList.remove('hidden');
-            renderCards();
-            window.scrollTo({top: 0, behavior: 'smooth'});
+        function showMenu() { 
+            document.getElementById('plugins-view').classList.add('hidden'); 
+            document.getElementById('main-menu').classList.remove('hidden'); 
         }
-
-        function showMenu() {
-            document.getElementById('plugins-view').classList.add('hidden');
-            document.getElementById('main-menu').classList.remove('hidden');
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-
         renderCards();
     </script>
-
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
-
 </body>
 </html>
