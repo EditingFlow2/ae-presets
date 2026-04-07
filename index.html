@@ -10,6 +10,20 @@
         body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .glass { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
         .flow-text { background: linear-gradient(to right, #fff, #00eeff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Top Credit Bar */
+        .top-credit-bar {
+            background: rgba(0, 238, 255, 0.05);
+            border-bottom: 1px solid rgba(0, 238, 255, 0.1);
+            padding: 10px 0;
+            text-align: center;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #00eeff;
+        }
+
         .category-btn { border: 2px solid #00eeff22; transition: 0.3s; cursor: pointer; }
         .category-btn:hover { border-color: #00eeff; background: rgba(0, 238, 255, 0.05); transform: translateY(-5px); }
         .hidden { display: none !important; }
@@ -71,12 +85,16 @@
         }
     </style>
 </head>
-<body class="p-6 md:p-20">
+<body>
 
-    <div class="max-w-6xl mx-auto min-h-screen flex flex-col">
+    <div class="top-credit-bar">
+        Official Distribution & Assets by YoungTV • All Rights Reserved
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6 pt-12 pb-20 min-h-screen flex flex-col">
         <header class="text-center mb-20">
             <h1 class="text-6xl md:text-8xl font-black italic flow-text uppercase tracking-tighter">EditingFlow</h1>
-            <p class="text-zinc-500 text-xs tracking-[0.5em] uppercase font-bold mt-4">Boyka x Thivi • Premium Editing Assets</p>
+            <p class="text-zinc-500 text-xs tracking-[0.5em] uppercase font-bold mt-4">Premium Assets for Creators</p>
         </header>
 
         <main class="flex-grow">
@@ -108,9 +126,8 @@
         </main>
 
         <footer class="footer-credit">
-            <p class="text-zinc-600 text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Developed by Boyka x Thivi</p>
             <p class="text-zinc-400 text-[11px] font-black tracking-widest uppercase">
-                © 2026 EditingFlow • Assets & Distribution by <span class="text-[#00eeff]">YoungTV</span>. All Rights Reserved.
+                © 2026 EditingFlow • Verified Assets by <span class="text-[#00eeff]">YoungTV</span>
             </p>
         </footer>
     </div>
@@ -148,7 +165,7 @@
                                 <p class="pw-text text-right">PASSWORD: youngtv</p>
                             </div>
                         </div>
-                        <p class="text-zinc-600 text-[9px] font-black uppercase tracking-[0.2em] mt-2 italic">Official YoungTV Release</p>
+                        <p class="text-zinc-600 text-[9px] font-black uppercase tracking-[0.2em] mt-2 italic">YoungTV Distribution</p>
                     </div>
                 </div>
                 `;
