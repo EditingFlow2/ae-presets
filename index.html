@@ -61,8 +61,18 @@
             transition: transform 0.4s ease;
         }
 
-        .portal-card:hover .icon-box {
-            transform: scale(1.1) rotate(5deg);
+        /* Styling for the Blood Strike Artwork specifically */
+        .bs-art {
+            width: 100px;
+            height: 100px;
+            border-radius: 25px;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .portal-card:hover .icon-box, .portal-card:hover .bs-art {
+            transform: scale(1.1) rotate(3deg);
         }
 
         .plugin-card { 
@@ -73,119 +83,4 @@
         }
         .plugin-card:hover { 
             border-color: var(--neon-blue); 
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-5px);
-        }
-
-        .search-input {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: white;
-            transition: 0.4s;
-        }
-        .search-input:focus { outline: none; border-color: var(--neon-blue); box-shadow: 0 0 30px rgba(0, 238, 255, 0.15); }
-
-        .free-badge {
-            font-size: 11px; font-weight: 900; color: #000; background: var(--neon-blue);
-            padding: 4px 12px; border-radius: 6px; letter-spacing: 1px;
-        }
-
-        .password-tag {
-            font-size: 13px; font-weight: 800; color: var(--neon-blue);
-            margin-top: 8px; text-transform: uppercase; letter-spacing: 0.05em;
-        }
-
-        .hidden { display: none !important; }
-        
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-slide { animation: slideUp 0.6s ease forwards; }
-    </style>
-</head>
-<body>
-
-    <div class="top-credit-bar">
-        Official Distribution & Verified Assets by YoungTV
-    </div>
-
-    <div class="max-w-7xl mx-auto px-6 pt-16 pb-24 min-h-screen flex flex-col">
-        
-        <header class="text-center mb-20">
-            <h1 class="text-7xl md:text-9xl font-black flow-text tracking-tighter uppercase mb-2">EditingFlow</h1>
-            <p id="sub-header" class="text-zinc-500 text-xs tracking-[0.4em] font-bold uppercase">Universal Creator Hub</p>
-        </header>
-
-        <main class="flex-grow">
-            
-            <div id="main-hub" class="grid grid-cols-1 md:grid-cols-3 gap-8 animate-slide">
-                
-                <div onclick="showSection('editing')" class="portal-card glass p-12 rounded-[48px] flex flex-col items-center text-center">
-                    <div class="icon-box">🎬</div>
-                    <h2 class="text-3xl font-extrabold uppercase tracking-tighter mb-4 leading-tight">Editing<br>Section</h2>
-                    <p class="text-zinc-500 text-xs font-bold uppercase tracking-widest">Plugins & Presets</p>
-                    <span class="mt-8 text-[10px] text-cyan-400 font-black border border-cyan-400/20 px-4 py-2 rounded-full uppercase">Enter Library</span>
-                </div>
-
-                <div onclick="showSection('clips')" class="portal-card glass p-12 rounded-[48px] flex flex-col items-center text-center">
-                    <div class="icon-box">🎮</div>
-                    <h2 class="text-3xl font-extrabold uppercase tracking-tighter mb-4 leading-tight">Blood Strike<br>Clips</h2>
-                    <p class="text-zinc-500 text-xs font-bold uppercase tracking-widest">Raw Gameplay & Edits</p>
-                    <span class="mt-8 text-[10px] text-zinc-600 font-black border border-white/10 px-4 py-2 rounded-full uppercase">Coming Soon</span>
-                </div>
-
-                <div onclick="showSection('upscale')" class="portal-card glass p-12 rounded-[48px] flex flex-col items-center text-center">
-                    <div class="icon-box">✨</div>
-                    <h2 class="text-3xl font-extrabold uppercase tracking-tighter mb-4 leading-tight">Video<br>Upscale</h2>
-                    <p class="text-zinc-500 text-xs font-bold uppercase tracking-widest">AI Enhancement & 4K</p>
-                    <span class="mt-8 text-[10px] text-zinc-600 font-black border border-white/10 px-4 py-2 rounded-full uppercase">Coming Soon</span>
-                </div>
-
-            </div>
-
-            <div id="editing-view" class="hidden animate-slide">
-                <div class="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-8">
-                    <button onclick="showHub()" class="flex items-center gap-3 text-zinc-500 hover:text-white transition-all uppercase text-xs font-bold tracking-widest">
-                        ← Return to Hub
-                    </button>
-                    <input type="text" id="pluginSearch" onkeyup="filterPlugins()" placeholder="Search library..." 
-                           class="search-input w-full md:w-96 px-8 py-5 rounded-3xl font-bold text-sm">
-                </div>
-                <div id="pluginContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-            </div>
-
-            <div id="other-view" class="hidden text-center py-20 animate-slide">
-                <h2 class="text-4xl font-black text-zinc-800 uppercase mb-4 italic">Under Construction</h2>
-                <button onclick="showHub()" class="text-cyan-400 font-bold uppercase tracking-widest text-xs">Return to Hub</button>
-            </div>
-
-        </main>
-
-        <footer class="mt-24 pt-12 border-t border-white/5 text-center">
-            <p class="text-zinc-500 text-[11px] font-bold tracking-[0.2em] uppercase">
-                © 2026 EditingFlow • Verified Distribution by <span class="text-white">YoungTV</span>
-            </p>
-        </footer>
-    </div>
-
-    <script>
-        const assets = [
-            "BCC.2024.EditingFlow", "AfterCodecs.v1.7.2.EditingFlow", "Bokeh.Win.EditingFlow", 
-            "BorisFX.Mocha.Pro.EditingFlow", "ClearPlus", "Deep.Glow.2.1.0.2.EditingFlow", 
-            "Deep.Glow.V1.Win.EditingFlow", "Element.3D.WIN.EditingFlow", "EZCO-CRT-EMULATOR.EditingFlow", 
-            "Flow.1.4.2.EditingFlow", "Flow.v1.5.2.EditingFlow", "FXConsole_1.0.5_Installer_x64.EditingFlow", 
-            "Influx.v1.3.0.EditingFlow", "Instant.4K.EditingFlow", "Magic.Bullet.Looks.2024.EditingFlow", 
-            "Omino.EditingFlow", "OpticalFlares.EditingFlow", "Pro.Shaders.EditingFlow", 
-            "RSMB.Pro.EditingFlow", "Saber.EditingFlow", "Sapphire.2024.EditingFlow", 
-            "Signal.EditingFlow", "Trapcode.Suite.2024.EditingFlow", "Twixtor.EditingFlow", 
-            "Twitch.EditingFlow", "universe.EditingFlow", "VFX.Suite.EditingFlow"
-        ];
-
-        function renderCards(filter = "") {
-            const container = document.getElementById('pluginContainer');
-            const filteredAssets = assets.filter(name => name.toLowerCase().includes(filter.toLowerCase()));
-
-            container.innerHTML = filteredAssets.map((name) => {
-                const displayName = name.replace(/\./g, ' ').replace('EditingFlow', '').trim();
-                const downloadUrl = `
+            background: rgba(2
