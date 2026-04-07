@@ -39,6 +39,15 @@
             letter-spacing: 0.05em;
             display: inline-block;
         }
+
+        .pw-text {
+            font-size: 10px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 4px;
+        }
     </style>
 </head>
 <body class="p-6 md:p-20">
@@ -78,7 +87,6 @@
     </div>
 
     <script>
-        // Updated asset list with BCC 2024 included
         const assets = [
             "BCC.2024.EditingFlow", "AfterCodecs.v1.7.2.EditingFlow", "Bokeh.Win.EditingFlow", 
             "BorisFX.Mocha.Pro.EditingFlow", "ClearPlus", "Deep.Glow.2.1.0.2.EditingFlow", 
@@ -102,9 +110,12 @@
                 return `
                 <div class="glass p-8 rounded-3xl flex flex-col justify-between hover:border-[#00eeff66] transition-all group">
                     <div>
-                        <div class="flex items-start justify-between gap-4 mb-4">
+                        <div class="flex items-start justify-between gap-4 mb-2">
                             <h3 class="plugin-title group-hover:text-[#00eeff] transition-colors">${displayName}</h3>
-                            <span class="free-badge">FREE</span>
+                            <div class="flex flex-col items-end">
+                                <span class="free-badge">FREE</span>
+                                <p class="pw-text">PW: youngtv</p>
+                            </div>
                         </div>
                         <p class="text-zinc-600 text-[9px] font-black uppercase tracking-[0.2em]">Verified Asset</p>
                     </div>
