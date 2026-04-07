@@ -7,11 +7,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; -webkit-user-select: none; user-select: none; }
+        body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; -webkit-user-select: none; user-select: none; overflow-x: hidden; }
         .glass { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
-        .category-btn:hover { border-color: #00eeff; background: rgba(0, 238, 255, 0.05); transform: scale(1.02); }
+        .category-btn { border: 2px solid #00eeff44; transition: 0.3s; }
+        .category-btn:hover { border-color: #00eeff; background: rgba(0, 238, 255, 0.05); transform: translateY(-2px); }
         .flow-text { background: linear-gradient(to right, #fff, #00eeff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hidden { display: none; }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -26,17 +26,49 @@
             <p class="text-zinc-500 text-xs tracking-[0.2em] uppercase font-bold mt-2">Premium AE Assets • Boyka x Thivi</p>
         </header>
 
-        <div id="category-menu" class="grid grid-cols-1 gap-4">
-            <button onclick="openCategory('plugins-folder')" class="category-btn glass p-10 rounded-2xl border border-white/10 text-2xl font-black tracking-widest uppercase transition-all">
+        <div id="category-menu" class="block space-y-4">
+            <button onclick="showFolder()" class="w-full category-btn glass p-10 rounded-2xl text-2xl font-black tracking-widest uppercase flex items-center justify-center gap-4">
                 📁 PLUGINS
             </button>
-            </div>
+        </div>
 
-        <div id="plugins-folder" class="hidden animate-in fade-in duration-500">
+        <div id="plugins-folder" class="hidden">
             <div class="flex items-center gap-4 mb-8">
-                <button onclick="goBack()" class="text-zinc-500 hover:text-white text-xs font-bold uppercase tracking-widest">← Back to Menu</button>
+                <button onclick="hideFolder()" class="text-zinc-500 hover:text-[#00eeff] text-xs font-black uppercase tracking-widest transition-all">← Back to Menu</button>
                 <div class="h-[1px] flex-grow bg-zinc-900"></div>
-                <span class="text-[#00eeff] text-xs font-black tracking-widest uppercase">Inside / Plugins</span>
+                <span class="text-[#00eeff] text-[10px] font-black tracking-[0.3em] uppercase">Directory / Plugins</span>
             </div>
 
-            <div class="grid grid-cols-1 md
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass p-8 rounded-2xl border border-white/5 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-black tracking-tight uppercase italic">GLITCHIFY</h3>
+                        <p class="text-zinc-500 text-[10px] uppercase font-bold mt-1">Version 1.0 • Plugin Pack</p>
+                    </div>
+                    <a href="Glitchify (EditingFlow).zip" download class="mt-8 block w-full text-center py-4 bg-white text-black text-xs font-black tracking-widest uppercase hover:bg-[#00eeff] transition-all rounded-sm">
+                        Get Asset
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full flex justify-center py-20 border-t border-zinc-900">
+        <div class="text-[10px] text-zinc-600 tracking-widest uppercase italic font-bold">Advertisement</div>
+    </div>
+
+    <script>
+        // Simple, reliable toggle functions
+        function showFolder() {
+            document.getElementById('category-menu').style.display = 'none';
+            document.getElementById('plugins-folder').style.display = 'block';
+        }
+
+        function hideFolder() {
+            document.getElementById('category-menu').style.display = 'block';
+            document.getElementById('plugins-folder').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
