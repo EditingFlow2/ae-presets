@@ -27,5 +27,16 @@
         </header>
 
         <div id="main-menu" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div onclick="openView('plugins-view
-                
+            <div onclick="openView('plugins-view')" class="category-btn glass p-16 rounded-3xl text-3xl font-black tracking-widest uppercase flex flex-col items-center gap-4">
+                <span class="text-5xl">📁</span> PLUGINS
+            </div>
+            <div onclick="openView('apps-view')" class="category-btn glass p-16 rounded-3xl text-3xl font-black tracking-widest uppercase flex flex-col items-center gap-4">
+                <span class="text-5xl">💻</span> APPS
+            </div>
+        </div>
+
+        <div id="plugins-view" class="hidden">
+            <button onclick="openView('main-menu')" class="mb-10 text-zinc-500 hover:text-white font-bold uppercase tracking-widest">← Back to Dashboard</button>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass p-10 rounded-3xl border border-white/5">
+                    <h3 class="text-3xl font-black
