@@ -9,9 +9,9 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
         body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; -webkit-user-select: none; user-select: none; }
         .glass { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
-        .preset-card:hover { border-color: #00eeff; background: rgba(0, 238, 255, 0.02); transform: translateY(-2px); transition: 0.3s; }
+        .category-btn:hover { border-color: #00eeff; background: rgba(0, 238, 255, 0.05); transform: scale(1.02); }
         .flow-text { background: linear-gradient(to right, #fff, #00eeff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .section-title { letter-spacing: 0.4em; color: #333; font-weight: 900; margin-bottom: 24px; border-l-2 border-[#00eeff] pl-4; text-transform: uppercase; font-size: 0.75rem; }
+        .hidden { display: none; }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -20,60 +20,23 @@
         <div class="text-[10px] text-zinc-600 tracking-widest uppercase italic font-bold">Advertisement</div>
     </div>
 
-    <div class="max-w-6xl mx-auto px-6 pb-20">
-        <header class="py-16 text-left">
-            <h1 class="text-7xl font-black tracking-tighter uppercase italic flow-text">EditingFlow</h1>
-            <div class="flex items-center gap-4 mt-2">
-                <p class="text-zinc-500 text-xs tracking-[0.2em] uppercase font-bold">Premium AE Assets • Boyka x Thivi</p>
-                <div class="h-[1px] w-20 bg-zinc-800"></div>
-            </div>
+    <div class="max-w-4xl mx-auto px-6 pb-20">
+        <header class="py-16 text-center">
+            <h1 class="text-6xl font-black tracking-tighter uppercase italic flow-text">EditingFlow</h1>
+            <p class="text-zinc-500 text-xs tracking-[0.2em] uppercase font-bold mt-2">Premium AE Assets • Boyka x Thivi</p>
         </header>
 
-        <div id="sections-container" class="space-y-16"></div>
-    </div>
+        <div id="category-menu" class="grid grid-cols-1 gap-4">
+            <button onclick="openCategory('plugins-folder')" class="category-btn glass p-10 rounded-2xl border border-white/10 text-2xl font-black tracking-widest uppercase transition-all">
+                📁 PLUGINS
+            </button>
+            </div>
 
-    <div class="w-full flex justify-center py-20 mt-20 border-t border-zinc-900">
-        <div class="text-[10px] text-zinc-600 tracking-widest uppercase italic font-bold">Advertisement</div>
-    </div>
+        <div id="plugins-folder" class="hidden animate-in fade-in duration-500">
+            <div class="flex items-center gap-4 mb-8">
+                <button onclick="goBack()" class="text-zinc-500 hover:text-white text-xs font-bold uppercase tracking-widest">← Back to Menu</button>
+                <div class="h-[1px] flex-grow bg-zinc-900"></div>
+                <span class="text-[#00eeff] text-xs font-black tracking-widest uppercase">Inside / Plugins</span>
+            </div>
 
-    <script>
-        // ADD NEW PLUGINS HERE
-        const items = [
-            { 
-                n: "GLITCHIFY", 
-                c: "PLUGINS", 
-                l: "Glitchify (EditingFlow).zip" 
-            }
-        ];
-
-        const container = document.getElementById('sections-container');
-        const categories = [...new Set(items.map(i => i.c))];
-
-        container.innerHTML = categories.map(cat => `
-            <section>
-                <h2 class="section-title">${cat}</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    ${items.filter(i => i.c === cat).map(item => `
-                        <div class="preset-card glass p-8 rounded-2xl flex flex-col justify-between border border-white/5">
-                            <h3 class="text-xl font-bold tracking-tight uppercase">${item.n}</h3>
-                            <button onclick="triggerDownload('${item.l}')" class="mt-8 block w-full text-center py-3 bg-white text-black text-xs font-black tracking-widest uppercase hover:bg-[#00eeff] transition-all rounded-sm">
-                                Get Asset
-                            </button>
-                        </div>
-                    `).join('')}
-                </div>
-            </section>
-        `).join('');
-
-        // AUTOMATIC DOWNLOAD FUNCTION
-        function triggerDownload(url) {
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', ''); // Triggers the auto-download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-    </script>
-</body>
-</html>
+            <div class="grid grid-cols-1 md
