@@ -18,6 +18,7 @@
             color: #fff; 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             margin: 0;
+            padding: 0;
             overflow-x: hidden;
         }
 
@@ -43,6 +44,7 @@
             border-radius: 15px;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
         }
 
         .return-btn:hover {
@@ -61,13 +63,10 @@
 
         .hub-grid {
             display: grid;
-            grid-template-columns: repeat(1, minmax(0, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             width: 100%;
-        }
-
-        @media (min-width: 768px) {
-            .hub-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            max-width: 1200px;
         }
 
         .portal-card { 
@@ -80,7 +79,7 @@
             align-items: center;
             text-align: center;
             padding: 3.5rem;
-            height: 100%;
+            min-height: 450px;
         }
 
         .portal-card:hover { 
@@ -103,4 +102,10 @@
             padding: 10px 30px;
             border-radius: 99px;
             font-size: 11px;
-            font-weight:
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: auto;
+        }
+
+        #credit-bar {
