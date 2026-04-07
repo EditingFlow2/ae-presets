@@ -14,7 +14,6 @@
         .category-btn:hover { border-color: #00eeff; background: rgba(0, 238, 255, 0.05); transform: translateY(-5px); }
         .hidden { display: none !important; }
         
-        /* Plugin Card Styling */
         .plugin-card { 
             cursor: pointer; 
             transition: all 0.3s ease;
@@ -63,42 +62,57 @@
             margin-top: 6px;
             opacity: 0.9;
         }
+
+        .footer-credit {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 40px;
+            margin-top: 80px;
+            text-align: center;
+        }
     </style>
 </head>
 <body class="p-6 md:p-20">
 
-    <div class="max-w-6xl mx-auto">
+    <div class="max-w-6xl mx-auto min-h-screen flex flex-col">
         <header class="text-center mb-20">
             <h1 class="text-6xl md:text-8xl font-black italic flow-text uppercase tracking-tighter">EditingFlow</h1>
             <p class="text-zinc-500 text-xs tracking-[0.5em] uppercase font-bold mt-4">Boyka x Thivi • Premium Editing Assets</p>
         </header>
 
-        <div id="main-menu" class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div onclick="showPlugins()" class="category-btn glass p-20 rounded-[40px] flex flex-col items-center justify-center">
-                <span class="text-6xl mb-6">📁</span>
-                <h2 class="text-3xl font-black uppercase tracking-widest">Plugins</h2>
+        <main class="flex-grow">
+            <div id="main-menu" class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div onclick="showPlugins()" class="category-btn glass p-20 rounded-[40px] flex flex-col items-center justify-center">
+                    <span class="text-6xl mb-6">📁</span>
+                    <h2 class="text-3xl font-black uppercase tracking-widest">Plugins</h2>
+                </div>
+
+                <div class="glass p-20 rounded-[40px] flex flex-col items-center justify-center opacity-30 cursor-not-allowed">
+                    <span class="text-6xl mb-6">💻</span>
+                    <h2 class="text-3xl font-black uppercase tracking-widest">Apps</h2>
+                    <span class="mt-4 px-4 py-1 border border-[#00eeff] text-[#00eeff] text-[10px] font-bold rounded">COMING SOON</span>
+                </div>
             </div>
 
-            <div class="glass p-20 rounded-[40px] flex flex-col items-center justify-center opacity-30 cursor-not-allowed">
-                <span class="text-6xl mb-6">💻</span>
-                <h2 class="text-3xl font-black uppercase tracking-widest">Apps</h2>
-                <span class="mt-4 px-4 py-1 border border-[#00eeff] text-[#00eeff] text-[10px] font-bold rounded">COMING SOON</span>
-            </div>
-        </div>
-
-        <div id="plugins-view" class="hidden">
-            <div class="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
-                <button onclick="showMenu()" class="text-zinc-400 hover:text-[#00eeff] font-bold uppercase text-xs tracking-widest transition-colors w-fit">← Back to Menu</button>
+            <div id="plugins-view" class="hidden">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
+                    <button onclick="showMenu()" class="text-zinc-400 hover:text-[#00eeff] font-bold uppercase text-xs tracking-widest transition-colors w-fit">← Back to Menu</button>
+                    <div class="relative w-full md:w-96">
+                        <input type="text" id="pluginSearch" onkeyup="filterPlugins()" placeholder="Search assets..." 
+                               class="search-input w-full px-6 py-4 rounded-2xl font-bold text-sm">
+                    </div>
+                </div>
                 
-                <div class="relative w-full md:w-96">
-                    <input type="text" id="pluginSearch" onkeyup="filterPlugins()" placeholder="Search assets..." 
-                           class="search-input w-full px-6 py-4 rounded-2xl font-bold text-sm">
-                </div>
+                <div id="pluginContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    </div>
             </div>
-            
-            <div id="pluginContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                </div>
-        </div>
+        </main>
+
+        <footer class="footer-credit">
+            <p class="text-zinc-600 text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Developed by Boyka x Thivi</p>
+            <p class="text-zinc-400 text-[11px] font-black tracking-widest uppercase">
+                © 2026 EditingFlow • Assets & Distribution by <span class="text-[#00eeff]">YoungTV</span>. All Rights Reserved.
+            </p>
+        </footer>
     </div>
 
     <script>
@@ -134,7 +148,7 @@
                                 <p class="pw-text text-right">PASSWORD: youngtv</p>
                             </div>
                         </div>
-                        <p class="text-zinc-600 text-[9px] font-black uppercase tracking-[0.2em] mt-2">Click to Download Asset</p>
+                        <p class="text-zinc-600 text-[9px] font-black uppercase tracking-[0.2em] mt-2 italic">Official YoungTV Release</p>
                     </div>
                 </div>
                 `;
