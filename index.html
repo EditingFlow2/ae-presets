@@ -13,8 +13,33 @@
         .category-btn { border: 2px solid #00eeff22; transition: 0.3s; cursor: pointer; }
         .category-btn:hover { border-color: #00eeff; background: rgba(0, 238, 255, 0.05); transform: translateY(-5px); }
         .hidden { display: none !important; }
-        /* Improved readability for the plugin titles */
-        .plugin-title { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; color: #f4f4f5; text-transform: uppercase; }
+        .plugin-title { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em; color: #f4f4f5; text-transform: uppercase; line-height: 1.2; }
+        
+        .search-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: 0.3s;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: #00eeff;
+            background: rgba(0, 238, 255, 0.05);
+            box-shadow: 0 0 20px rgba(0, 238, 255, 0.1);
+        }
+
+        /* Neon Free Badge */
+        .free-badge {
+            font-size: 0.65rem;
+            font-weight: 900;
+            color: #00eeff;
+            border: 1px solid #00eeff44;
+            padding: 1px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: inline-block;
+        }
     </style>
 </head>
 <body class="p-6 md:p-20">
@@ -39,53 +64,69 @@
         </div>
 
         <div id="plugins-view" class="hidden">
-            <div class="flex items-center justify-between mb-12">
-                <button onclick="showMenu()" class="text-zinc-400 hover:text-[#00eeff] font-bold uppercase text-xs tracking-widest transition-colors">← Back to Menu</button>
-                <span class="text-zinc-600 text-xs font-bold tracking-widest uppercase">Select an Asset to Download</span>
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
+                <button onclick="showMenu()" class="text-zinc-400 hover:text-[#00eeff] font-bold uppercase text-xs tracking-widest transition-colors w-fit">← Back to Menu</button>
+                
+                <div class="relative w-full md:w-96">
+                    <input type="text" id="pluginSearch" onkeyup="filterPlugins()" placeholder="Search assets..." 
+                           class="search-input w-full px-6 py-4 rounded-2xl font-bold text-sm">
+                </div>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <script>
-                    // Updated list: Removed After Effects 2020
-                    const assets = [
-                        "AfterCodecs.v1.7.2.EditingFlow", "Bokeh.Win.EditingFlow", "BorisFX.Mocha.Pro.EditingFlow",
-                        "ClearPlus", "Deep.Glow.2.1.0.2.EditingFlow", "Deep.Glow.V1.Win.EditingFlow",
-                        "Element.3D.WIN.EditingFlow", "EZCO-CRT-EMULATOR.EditingFlow", "Flow.1.4.2.EditingFlow",
-                        "Flow.v1.5.2.EditingFlow", "FXConsole_1.0.5_Installer_x64.EditingFlow", "Influx.v1.3.0.EditingFlow",
-                        "Instant.4K.EditingFlow", "Magic.Bullet.Looks.2024.EditingFlow", "Omino.EditingFlow",
-                        "OpticalFlares.EditingFlow", "Pro.Shaders.EditingFlow", "RSMB.Pro.EditingFlow",
-                        "Saber.EditingFlow", "Sapphire.2024.EditingFlow", "Signal.EditingFlow",
-                        "Trapcode.Suite.2024.EditingFlow", "Twixtor.EditingFlow", "Twitch.EditingFlow",
-                        "universe.EditingFlow", "VFX.Suite.EditingFlow"
-                    ];
-
-                    document.write(assets.map(name => {
-                        // Clean up the name for display (Remove dots and "EditingFlow")
-                        const displayName = name.replace(/\./g, ' ').replace('EditingFlow', '').trim();
-                        
-                        return `
-                        <div class="glass p-8 rounded-3xl flex flex-col justify-between hover:border-[#00eeff66] transition-all group">
-                            <div>
-                                <h3 class="plugin-title group-hover:text-[#00eeff] transition-colors">${displayName}</h3>
-                                <p class="text-[#00eeff] text-[9px] font-black mt-2 uppercase tracking-[0.2em] opacity-70">Premium Asset</p>
-                            </div>
-                            <a href="https://github.com/EditingFlow2/ae-presets/releases/download/v1.0/${name}.zip" 
-                               download 
-                               class="mt-8 block w-full text-center py-4 bg-white text-black text-xs font-black tracking-widest uppercase hover:bg-[#00eeff] transition-all rounded-2xl">
-                               Download Now
-                            </a>
-                        </div>
-                        `;
-                    }).join(''));
-                </script>
-            </div>
+            <div id="pluginContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                </div>
         </div>
     </div>
 
     <script>
+        const assets = [
+            "AfterCodecs.v1.7.2.EditingFlow", "Bokeh.Win.EditingFlow", "BorisFX.Mocha.Pro.EditingFlow",
+            "ClearPlus", "Deep.Glow.2.1.0.2.EditingFlow", "Deep.Glow.V1.Win.EditingFlow",
+            "Element.3D.WIN.EditingFlow", "EZCO-CRT-EMULATOR.EditingFlow", "Flow.1.4.2.EditingFlow",
+            "Flow.v1.5.2.EditingFlow", "FXConsole_1.0.5_Installer_x64.EditingFlow", "Influx.v1.3.0.EditingFlow",
+            "Instant.4K.EditingFlow", "Magic.Bullet.Looks.2024.EditingFlow", "Omino.EditingFlow",
+            "OpticalFlares.EditingFlow", "Pro.Shaders.EditingFlow", "RSMB.Pro.EditingFlow",
+            "Saber.EditingFlow", "Sapphire.2024.EditingFlow", "Signal.EditingFlow",
+            "Trapcode.Suite.2024.EditingFlow", "Twixtor.EditingFlow", "Twitch.EditingFlow",
+            "universe.EditingFlow", "VFX.Suite.EditingFlow"
+        ];
+
+        function renderCards(filter = "") {
+            const container = document.getElementById('pluginContainer');
+            const filteredAssets = assets.filter(name => 
+                name.toLowerCase().includes(filter.toLowerCase())
+            );
+
+            container.innerHTML = filteredAssets.map(name => {
+                const displayName = name.replace(/\./g, ' ').replace('EditingFlow', '').trim();
+                return `
+                <div class="glass p-8 rounded-3xl flex flex-col justify-between hover:border-[#00eeff66] transition-all group">
+                    <div>
+                        <div class="flex items-start justify-between gap-4 mb-4">
+                            <h3 class="plugin-title group-hover:text-[#00eeff] transition-colors">${displayName}</h3>
+                            <span class="free-badge">FREE</span>
+                        </div>
+                        <p class="text-zinc-600 text-[9px] font-black uppercase tracking-[0.2em]">Verified Asset</p>
+                    </div>
+                    <a href="https://github.com/EditingFlow2/ae-presets/releases/download/v1.0/${name}.zip" 
+                       download 
+                       class="mt-8 block w-full text-center py-4 bg-white text-black text-xs font-black tracking-widest uppercase hover:bg-[#00eeff] transition-all rounded-2xl">
+                       Download Now
+                    </a>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function filterPlugins() {
+            const query = document.getElementById('pluginSearch').value;
+            renderCards(query);
+        }
+
         function showPlugins() {
             document.getElementById('main-menu').classList.add('hidden');
             document.getElementById('plugins-view').classList.remove('hidden');
+            renderCards();
             window.scrollTo(0, 0);
         }
 
@@ -94,6 +135,8 @@
             document.getElementById('main-menu').classList.remove('hidden');
             window.scrollTo(0, 0);
         }
+
+        renderCards();
     </script>
 
 </body>
