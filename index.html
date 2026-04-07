@@ -30,11 +30,6 @@
             </div>
         </header>
 
-        <div class="sticky top-6 z-50 mb-12">
-            <input type="text" id="search" placeholder="SEARCH PRESETS..." 
-                class="w-full p-5 glass rounded-xl text-white outline-none focus:border-[#00eeff] tracking-widest text-sm transition-all uppercase">
-        </div>
-
         <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             </div>
     </div>
@@ -44,7 +39,7 @@
     </div>
 
     <script>
-        // Update the 'l' values with your Payhip links
+        // ADD YOUR 100+ PRESETS HERE
         const presets = [
             { n: "ULTIMATE CC PACK", c: "COLOR", l: "#" },
             { n: "VELOCITY SHAKES", c: "MOTION", l: "#" },
@@ -55,28 +50,7 @@
         ];
 
         const grid = document.getElementById('grid');
-        const search = document.getElementById('search');
 
         function render(items) {
             grid.innerHTML = items.map(i => `
-                <div class="preset-card glass p-8 rounded-2xl flex flex-col justify-between border border-white/5 h-full">
-                    <div>
-                        <span class="text-[9px] font-black text-[#00eeff] tracking-[0.3em] uppercase">${i.c}</span>
-                        <h3 class="text-xl font-bold mt-2 tracking-tight">${i.n}</h3>
-                    </div>
-                    <a href="${i.l}" target="_blank" class="mt-8 block w-full text-center py-3 bg-white text-black text-xs font-black tracking-widest uppercase hover:bg-[#00eeff] transition-all rounded-sm">
-                        Get Asset
-                    </a>
-                </div>
-            `).join('');
-        }
-
-        search.oninput = (e) => {
-            const val = e.target.value.toLowerCase();
-            render(presets.filter(p => p.n.toLowerCase().includes(val) || p.c.toLowerCase().includes(val)));
-        };
-
-        render(presets);
-    </script>
-</body>
-</html>
+                <div class="preset-card glass p-8 rounded-2
